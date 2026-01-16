@@ -27,7 +27,13 @@ if st.button("Predict"):
                     
                     st.write("Spam Probability:", round(result["spam_probability"], 4))
 
-                    if result["prediction"] == 1:
+                    prob = result.get("spam_probability", 0)
+                    pred = result.get("prediction", 0)
+
+                    st.write(f"Spam Probability: {prob:.4f}")
+
+# Fix: Check if prediction is 1 (as int or string) OR if probability is > 0.5
+                    if str(pred) == "1" or prob >= 0.5:
                         st.error("🚨 SPAM MESSAGE")
                     else:
                         st.success("✅ HAM MESSAGE")
