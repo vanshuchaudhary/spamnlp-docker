@@ -14,7 +14,7 @@ if st.button("Predict"):
         st.warning("Please enter a message")
     else:
         response = requests.post(
-            "http://flask_app:8000/predict",
+            "https://spamnlp-api-flask.onrender.com",
             json={"message": your_message}
         )
 
