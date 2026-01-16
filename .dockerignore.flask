@@ -1,0 +1,26 @@
+# Jupyter notebooks
+*.ipynb
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Streamlit cache
+.streamlit/
+
+# Environment variables
+.env
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+
+# Git
+.git
+.gitignore

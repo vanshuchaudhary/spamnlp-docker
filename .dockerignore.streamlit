@@ -1,0 +1,45 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Git
+.git/
+.gitignore
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Large model / data files (not needed for UI)
+*.pkl
+*.joblib
+*.h5
+*.pt
+*.onnx
+data/
+models/
+
+# Docker
+Dockerfile
+docker-compose.yml
+
+# Flask backend files (exclude backend)
+nlpapp.py
+backend/

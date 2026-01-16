@@ -1,0 +1,14 @@
+Pandas 
+Numpy
+Matplotlib
+Seaborn
+scikit-learn==1.7.2
+nltk 
+stopwords
+nlp
+streamlit
+flask
+
+
+
+

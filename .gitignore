@@ -1,0 +1,16 @@
+# Python Byte-code
+__pycache__/
+*.py[cod]
+
+# Virtual Environments
+venv/
+env/
+.env
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Data and Models (Large files you don't want on GitHub)
+data/
+*.pkl
+*.model
