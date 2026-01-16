@@ -1,8 +1,8 @@
 import streamlit as st
-import joblib
-import pandas as pd
-import numpy as np 
 import requests
+import time
+
+st.set_page_config(page_title="Spam Detector", page_icon="🚨")
 
 st.title("NLP Based Spam Detection App")
 st.write("UI loaded successfully")
@@ -13,20 +13,33 @@ if st.button("Predict"):
     if your_message.strip() == "":
         st.warning("Please enter a message")
     else:
-        response = requests.post(
-            "https://spamnlp-api-flask.onrender.com",
-            json={"message": your_message}
-        )
+        # 1. Show a loading spinner so the user knows to wait for the wake-up
+        with st.spinner("Waking up the API... This may take a minute on the Free Tier."):
+            try:
+                response = requests.post(
+                    "https://spamnlp-api-flask.onrender.com/predict", # Make sure /predict is at the end!
+                    json={"message": your_message},
+                    timeout=60 # Give it 60 seconds to wake up
+                )
+                
+                if response.status_code == 200:
+                    result = response.json()
+                    
+                    st.write("Spam Probability:", round(result["spam_probability"], 4))
 
-        result = response.json()
+                    if result["prediction"] == 1:
+                        st.error("🚨 SPAM MESSAGE")
+                    else:
+                        st.success("✅ HAM MESSAGE")
+                else:
+                    st.error(f"API Error: Received status code {response.status_code}")
 
-        st.write("Spam Probability:",  result["spam_probability"])
+            except requests.exceptions.ReadTimeout:
+                st.error("The API is taking too long to wake up. Please wait 10 seconds and click Predict again.")
+            except Exception as e:
+                st.error(f"Connection Error: {e}")
 
-        if result["prediction"] == 1:
-            st.error("🚨 SPAM MESSAGE")
-        else:
-            st.success("✅ HAM MESSAGE")
-
+# Background styling
 st.markdown(
     """
     <style>
@@ -37,5 +50,4 @@ st.markdown(
     </style>
     """,
     unsafe_allow_html=True
-
 )
