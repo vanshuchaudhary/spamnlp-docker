@@ -14,3 +14,5 @@ env/
 data/
 *.pkl
 *.model
+# EXCEPT this one
+!spam.pkl
