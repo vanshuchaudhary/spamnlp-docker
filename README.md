@@ -83,6 +83,16 @@ spam-ham-nlp/
 ```
 
 ---
+## 📸 Screenshots
+
+### Streamlit Web Interface
+![Streamlit Home](Appui.png)
+
+### Prediction Result
+![Spam/Ham Prediction](App-upi-api-reponse.png)
+
+
+---
 
 ## 🧰 Tech Stack
 
